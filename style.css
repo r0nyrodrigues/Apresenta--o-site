@@ -1,0 +1,37 @@
+body{
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+header{
+  /* Define a imagem de fundo */
+  background-image: url("D:\Users\937644.SENAC_EDUC\OneDrive - SENAC em Minas - EDU\Documentos\UC13 - Executar os processos de codificação, manutenção e documentação de\Apresentação site\img\Captura de tela 2026-07-13 213726.png"); 
+  
+  /* Faz a imagem cobrir todo o espaço do cabeçalho */
+  background-size: cover; 
+  
+  /* Centraliza a imagem no elemento */
+  background-position: center; 
+  
+  /* Impede que a imagem se repita */
+  background-repeat: no-repeat; 
+  
+  /* Garante uma altura mínima se o header estiver vazio */
+  min-height: 300px; 
+}
+main{
+
+}
+footer{
+
+}
+
+
+
+
+/* #68B2F8
+#506EE5
+#7037CD
+#651F71
+#1D0C20 */
