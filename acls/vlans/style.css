@@ -6,14 +6,12 @@
    #1D0C20 - Roxo Noturno (Fundo do Terminal)
 */
 
-
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f5fa;
     color: #1D0C20;
-    height: 100vh;
-    margin: 0px;
+    line-height: 1.6;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -45,40 +43,11 @@ main {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(29, 12, 32, 0.12);
-    box-sizing: border-box;
 }
 
 main p {
     margin-bottom: 15px;
+    font-size: 1.05rem;
     color: #333;
-    display: block;
-
 }
 
-a{
-    display: inline-block;  
-    text-decoration: none;
-    color: rgb(2, 137, 255);
-    box-sizing: border-box;
-    margin-right: 200px;
-}
-a:hover{
-    color:darkred;
-    border: 2mm ridge  palevioletred;
-    border-radius:33%;
-}
-a:active{
-    text-transform: uppercase;
-}
-a:visited{
-    color: blueviolet;
-}
-a:focus{
-    color:green;
-}
-div{
-  display: flex;
-  margin: 0px;
-  justify-content:center;
-  flex-wrap: wrap;
-}
