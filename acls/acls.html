@@ -21,10 +21,31 @@
             Lists). Elas trabalham juntas, mas em camadas diferentes, para garantir que o tráfego de dados seja rápido,
             organizado e seguro.
         </p>
-        <form action="C:\GitHub\Apresenta--o-site\Index.html" method="get"> 
-            <button type="submit">ACLs</button> </form>
-        <form action="C:\GitHub\Apresenta--o-site\acls\vlans\vlans.html" method="get"> 
-            <button type="submit">VLANs</button> </form>
+        <form action="C:\GitHub\Apresenta--o-site\Index.html" method="get">
+            <button type="submit">ACLs</button>
+        </form>
+        <form action="C:\GitHub\Apresenta--o-site\acls\vlans\vlans.html" method="get">
+            <button type="submit">VLANs</button>
+        </form>
+        2. ACLs (Listas de Controle de Acesso)
+        Enquanto as VLANs separam as salas, as ACLs são os seguranças na porta de cada sala. Elas atuam
+        predominantemente nas Camadas 3 (Rede) e 4 (Transporte) do modelo OSI.
+        Como funciona?
+        Quando você usa um roteador para permitir que a VLAN de Vendas converse com a VLAN de TI, você acaba de criar
+        uma ponte entre elas. Mas e se você não quiser que Vendas acesse os servidores confidenciais da TI? É aí que
+        entra a ACL.
+        Uma ACL é uma lista sequencial de regras do tipo Permitir (Permit) ou Negar (Deny). O roteador lê o cabeçalho de
+        cada pacote de dados que passa por ele e verifica as regras de cima para baixo:
+        Regra 1: Negar o IP 192.168.10.5 (PC Vendas) de acessar a porta 80 (Web) do IP 192.168.20.10 (Servidor TI).
+        Regra 2: Permitir todo o resto da VLAN 10 para a VLAN 20.
+        Se a regra 1 for ativada, o roteador descarta o pacote na hora. Se não, ele passa para a regra 2. Se nenhuma
+        regra for correspondida, entra em ação a regra invisível que existe no final de toda ACL: o Deny All (nega tudo
+        por padrão).
+        Principais Benefícios:
+        Segurança Granular: Você pode bloquear ou permitir tráfego baseado em IP de origem, IP de destino, protocolo
+        (TCP/UDP) e número de porta (ex: bloquear tráfego web, mas permitir ping).
+        Mitigação de Ataques: Ajuda a bloquear IPs maliciosos ou limitar tipos específicos de tráfego (como ICMP para
+        evitar ataques de negação de serviço).
 
     </main>
     <footer>

@@ -21,13 +21,32 @@
             Lists). Elas trabalham juntas, mas em camadas diferentes, para garantir que o tráfego de dados seja rápido,
             organizado e seguro.
         </p>
-        <form action="C:\GitHub\Apresenta--o-site\acls\acls.html" method="get"> 
-            <button type="submit">ACLs</button> </form>
-        <form action="C:\GitHub\Apresenta--o-site\Index.html" method="get"> 
-            <button type="submit">VLANs</button> </form>
-        <h1>VLANs (Redes Locais Virtuais)</h1>
-        <p>A VLAN atua na Camada 2 (Enlace) do modelo OSI. A função principal dela é a organização lógica e
-        isolamento de tráfego.</p>
+        <form action="C:\GitHub\Apresenta--o-site\acls\acls.html" method="get">
+            <button type="submit">ACLs</button>
+        </form>
+        <form action="C:\GitHub\Apresenta--o-site\Index.html" method="get">
+            <button type="submit">VLANs</button>
+        </form>
+
+        <h1>1. VLANs (Redes Locais Virtuais)</h1>
+        A VLAN atua na Camada 2 (Enlace) do modelo OSI. A função principal dela é a organização lógica e isolamento de
+        tráfego.
+        Como funciona?
+        Imagine que você tem um único Switch físico de 24 portas. Sem VLANs, todos os 24 computadores conectados a ele
+        receberão os "gritos" (broadcasts) uns dos outros. Se um computador pergunta "Quem tem a impressora?", os outros
+        23 param para ouvir a mensagem, mesmo que não seja para eles.
+        Com VLANs, você pode dividir esse switch fisicamente único em múltiplos switches lógicos. Por exemplo:
+        Portas 1 a 10: VLAN 10 (Departamento de Vendas)
+        Portas 11 a 20: VLAN 20 (Departamento de TI)
+        Agora, um broadcast na VLAN 10 jamais será ouvido pela VLAN 20. Eles estão em "salas" diferentes, mesmo morando
+        no mesmo "prédio" (o switch físico).
+        Principais Benefícios:
+        Redução de Broadcast: Limita o ruído da rede, melhorando a performance geral.
+        Flexibilidade: Um funcionário de Vendas pode sentar no andar da TI, conectar o cabo na parede, e a porta do
+        switch pode ser configurada para pertencer à VLAN de Vendas. A rede segue o usuário, não o cabo físico.
+        Segurança Básica: Dispositivos em uma VLAN não conseguem falar com dispositivos de outra VLAN nativamente. Para
+        que eles conversem, é necessário um Roteador (ou Switch Layer 3) para fazer o roteamento inter-VLAN.
+
 
     </main>
     <footer>
