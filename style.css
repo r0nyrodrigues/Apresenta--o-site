@@ -17,9 +17,8 @@ body {
     box-sizing: border-box;
 }
 
-/* --- HEADER --- */
 header {
-    background-image: linear-gradient(rgba(29, 12, 32, 0.75), rgba(101, 31, 113, 0.85)), url("img/Captura\ de\ tela\ 2026-07-13\ 213726.png"); 
+    background-image: linear-gradient(rgba(12, 23, 32, 0.75), rgba(0, 140, 255, 0.85)), url("img/Captura\ de\ tela\ 2026-07-13\ 213726.png"); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -37,7 +36,6 @@ header h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* --- MAIN --- */
 main {
     max-width: 900px;
     margin: -30px auto 40px auto;
@@ -52,19 +50,18 @@ main p {
     margin-bottom: 15px;
     color: #333;
     display: block;
-
 }
 
 a{
     display: inline-block;  
     text-decoration: none;
+    text-align: center;
     color: rgb(2, 137, 255);
     box-sizing: border-box;
-    margin-right: 200px;
 }
 a:hover{
     color:darkred;
-    border: 2mm ridge  palevioletred;
+    border: 2mm ;
     border-radius:33%;
 }
 a:active{
@@ -81,4 +78,5 @@ div{
   margin: 0px;
   justify-content:center;
   flex-wrap: wrap;
+  gap: 300px;
 }
