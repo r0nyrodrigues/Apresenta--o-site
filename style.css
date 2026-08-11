@@ -6,10 +6,11 @@
    #1D0C20 - Roxo Noturno (Fundo do Terminal)
 */
 
-
+*{
+    font-family: Arial, sans-serif;
+}
 
 body {
-    font-family: Arial, sans-serif;
     background-color: #f4f5fa;
     color: #1D0C20;
     height: 100vh;
@@ -18,40 +19,50 @@ body {
 }
 
 header {
+    display: flex;
+    height: 30%;
     background-image: linear-gradient(rgba(12, 23, 32, 0.75), rgba(0, 140, 255, 0.85)), url("img/Captura de tela 2026-07-13 213726.png"); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
-    min-height: 250px; 
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
     color: #ffffff;
+    flex-direction: column;
 }
 
 header h1 {
-    font-size: 2.2rem;
+    font-size: 3.2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 main {
-    max-width: 900px;
+    display: flex;
+    width: 60%;
+    height: 60%;
     margin: -30px auto 40px auto;
     background: #ffffff;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(29, 12, 32, 0.12);
     box-sizing: border-box;
+    flex-direction: column;
 }
 
-main p {
+main pre {
     margin-bottom: 15px;
-    color: #333;
-    display: block;
-}
+    display: flex;
+    text-align:justify;
+    justify-content: center;
 
+}
+main div{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
 a{
     display: inline-block;  
     text-decoration: none;
@@ -73,10 +84,18 @@ a:visited{
 a:focus{
     color:green;
 }
-div{
+header div{
   display: flex;
   margin: 0px;
   justify-content:center;
   flex-wrap: wrap;
   gap: 300px;
+}
+footer{
+    display: flex;
+    height: 3%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: flex-end;
 }
