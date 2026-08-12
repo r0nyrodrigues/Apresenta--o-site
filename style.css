@@ -1,101 +1,241 @@
-/* PALETA DE CORES:
-   #68B2F8 - Azul Claro (Destaques/Pacotes L2)
-   #506EE5 - Azul Principal (Botões e Pacotes L3)
-   #7037CD - Roxo Vibrante (Destaque do Roteador)
-   #651F71 - Roxo Escuro (Títulos)
-   #1D0C20 - Roxo Noturno (Fundo do Terminal)
-*/
 
-*{
+:root {
+    --azul-principal: #44749d; /* Títulos, Botões, Roteador, Destaques */
+    --azul-claro: #c6d4e1;     /* PCs, Hovers, Fundo claro */
+    --branco: #ffffff;         /* Fundo do Main, Textos claros */
+    --creme: #ebe7e0;          /* Fundo do Body, Linhas, Topologia */
+    --cinza: #bdb8ad;          /* Bordas, Detalhes, Servidor, Footer */
+}
+
+* {
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: #f4f5fa;
-    color: #1D0C20;
-    height: 100vh;
-    margin: 0px;
-    box-sizing: border-box;
+    background-color: var(--creme);
+    color: #333333; /* Cor neutra para leitura dos textos */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* CABEÇALHO */
 header {
     display: flex;
-    height: 30%;
-    background-image: linear-gradient(rgba(12, 23, 32, 0.75), rgba(0, 140, 255, 0.85)), url("img/Captura de tela 2026-07-13 213726.png"); 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 35px 20px;
+    /* Gradiente ajustado usando tons do Azul Principal */
+    background-image: linear-gradient(rgba(68, 116, 157, 0.85), rgba(40, 70, 95, 0.9)), url("img/Captura de tela 2026-07-13 213726.png"); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    color: #ffffff;
-    flex-direction: column;
+    color: var(--branco);
 }
 
 header h1 {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
+    margin-bottom: 15px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-main {
+.menu {
     display: flex;
-    width: 60%;
-    height: 60%;
-    margin: -30px auto 40px auto;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(29, 12, 32, 0.12);
-    box-sizing: border-box;
-    flex-direction: column;
-}
-
-main pre {
-    margin-bottom: 15px;
-    display: flex;
-    text-align:justify;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
 
-}
-main div{
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-}
-a{
+.menu a {
     display: inline-block;  
     text-decoration: none;
-    text-align: center;
-    color: rgb(2, 137, 255);
-    box-sizing: border-box;
+    color: var(--branco);
+    font-weight: bold;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
 }
-a:hover{
-    color:darkred;
-    border: 2mm ;
-    border-radius:33%;
+
+.menu a:hover {
+    color: var(--azul-principal);
+    background-color: var(--azul-claro);
+    border-radius: 6px;
 }
-a:active{
-    text-transform: uppercase;
-}
-a:visited{
-    color: blueviolet;
-}
-a:focus{
-    color:green;
-}
-header div{
-  display: flex;
-  margin: 0px;
-  justify-content:center;
-  flex-wrap: wrap;
-  gap: 300px;
-}
-footer{
+
+/* CONTEÚDO PRINCIPAL (MAIN) */
+main {
+    width: 85%;
+    max-width: 1000px;
+    margin: -20px auto 40px auto;
+    background: var(--branco);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--cinza); /* Adicionado contorno sutil */
     display: flex;
-    height: 3%;
-    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* SIMULADOR DE REDE */
+.simulador-container {
+    margin-top: 20px;
+    padding: 25px;
+    border: 2px solid var(--azul-principal);
+    border-radius: 10px;
+    background-color: var(--branco);
+}
+
+.painel-controle {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.grupo-controle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.grupo-controle label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--azul-principal);
+}
+
+.painel-controle select {
+    padding: 10px;
+    border: 1px solid var(--cinza);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background-color: var(--branco);
+}
+
+.btn-enviar {
+    padding: 10px 20px;
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #345c7e; /* Tom levemente mais escuro do azul principal */
+}
+
+/* TOPOLOGIA DA REDE */
+.topologia-rede {
+    position: relative;
+    min-height: 260px;
+    background-color: var(--creme);
+    border: 1px solid var(--cinza);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
-    justify-content: flex-end;
+    padding: 20px 40px;
+}
+
+.no-rede {
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-pc {
+    background-color: var(--azul-claro);
+    color: var(--azul-principal); /* Letra escura no fundo claro */
+    border: 1px solid var(--azul-principal);
+}
+
+.no-roteador {
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    z-index: 10;
+}
+
+.no-servidor {
+    background-color: var(--cinza);
+    color: #333333;
+}
+
+.no-subtexto {
+    font-size: 0.75rem;
+    font-weight: normal;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+.coluna-destinos {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* PACOTE ANIMADO DO SCRIPT.JS */
+.pacote-animado {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* CONSOLE DO ROTEADOR / TERMINAL */
+.console-log {
+    margin-top: 25px;
+}
+
+.console-log h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--azul-principal);
+}
+
+#log {
+    height: 160px;
+    /* Fundo azul principal e texto branco para o terminal */
+    background-color: #2c4a63; 
+    color: var(--branco);
+    padding: 15px;
+    border-radius: 6px;
+    border: 2px solid var(--cinza);
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+}
+
+/* FOOTER */
+footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--cinza);
+    color: #333333; /* Texto escuro no fundo cinza */
+    font-size: 0.9rem;
+    font-weight: bold;
 }

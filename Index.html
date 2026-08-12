@@ -1,27 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Segmentação de Rede - VLANs</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segmentação de Rede</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
+  <body>
     <header>
-        <h1>Segmentação de Rede (VLANs & ACLs)</h1>
-        <div>
-            <a
-                href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\Index.html">Inicio</a>
-            <a
-                href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\acls\acls.html">ACLs</a>
-            <a
-                href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\acls\vlans\vlans.html">VLANs</a>
-        </div>
+      <h1>Segmentação de Rede (VLANs & ACLs)</h1>
+      <nav class="menu">
+        <a href="Index.html">Início</a>
+        <a href="acls.html">ACLs</a>
+        <a href="vlans.html">VLANs</a>
+      </nav>
     </header>
+
     <main>
-        <pre>
+         <pre>
             Compreender a segmentação de rede é como entender a arquitetura de segurança e organização de um grande
             edifício corporativo. Sem segmentação, todos os funcionários, visitantes e dados circulam pelo mesmo saguão
             gigante, o que gera lentidão, confusão e, principalmente, falhas de segurança críticas.
@@ -30,12 +27,70 @@
             e seguro.
         </pre>
 
+      <section class="simulador-container">
+        <h2>Simulador Interativo de Envio de Pacotes e ACLs</h2>
 
+        <div class="painel-controle">
+          <div class="grupo-controle">
+            <label for="origem">Origem:</label>
+            <select id="origem">
+              <option value="node-pca">PC A (VLAN 10 - 192.168.10.10)</option>
+            </select>
+          </div>
+
+          <div class="grupo-controle">
+            <label for="destino">Destino:</label>
+            <select id="destino">
+              <option value="node-serva">Servidor A (VLAN 20 - 192.168.20.10)</option>
+              <option value="node-pcb">PC B (VLAN 10 - 192.168.10.20)</option>
+            </select>
+          </div>
+
+          <div class="grupo-controle">
+            <label for="acl">Regra de ACL:</label>
+            <select id="acl">
+              <option value="none">Sem ACL (Permitir Tudo)</option>
+              <option value="deny_vlan10_to_vlan20">Bloquear VLAN 10 ➔ VLAN 20</option>
+              <option value="deny_pca_to_serva">Bloquear PC A ➔ Servidor A</option>
+            </select>
+          </div>
+
+          <button class="btn-enviar" onclick="enviarPacote()">Enviar Pacote</button>
+        </div>
+
+        <div class="topologia-rede">
+          <div id="node-pca" class="no-rede no-pc" data-vlan="10" data-ip="192.168.10.10">
+            💻 PC A
+            <span class="no-subtexto">VLAN 10</span>
+          </div>
+
+          <div id="node-router" class="no-rede no-roteador">
+            🔄 Roteador L3
+          </div>
+
+          <div class="coluna-destinos">
+            <div id="node-serva" class="no-rede no-servidor" data-vlan="20" data-ip="192.168.20.10">
+              🖥️ Servidor A
+              <span class="no-subtexto">VLAN 20</span>
+            </div>
+            <div id="node-pcb" class="no-rede no-pc" data-vlan="10" data-ip="192.168.10.20">
+              💻 PC B
+              <span class="no-subtexto">VLAN 10</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="console-log">
+          <h3>Console do Roteador / Switch:</h3>
+          <pre id="log"></pre>
+        </div>
+      </section>
     </main>
-    <footer>
-        <p>&copy; Desenvolvido por Rony e Julia</p>
-    </footer>
-    <script src="script.js"></script>
-</body>
 
+    <footer>
+      <p>&copy; Desenvolvido por Rony e Julia</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -1,101 +1,116 @@
-/* PALETA DE CORES:
-   #68B2F8 - Azul Claro (Destaques/Pacotes L2)
-   #506EE5 - Azul Principal (Botões e Pacotes L3)
-   #7037CD - Roxo Vibrante (Destaque do Roteador)
-   #651F71 - Roxo Escuro (Títulos)
-   #1D0C20 - Roxo Noturno (Fundo do Terminal)
-*/
-
-*{
-    font-family: Arial, sans-serif;
+/* Paleta de Cores Atualizada */
+:root {
+    --azul-principal: #44749d; /* Títulos, Botões, Roteador, Destaques */
+    --azul-claro: #c6d4e1;     /* PCs, Hovers, Fundo claro */
+    --branco: #ffffff;         /* Fundo do Main, Textos claros */
+    --creme: #ebe7e0;          /* Fundo do Body, Linhas, Topologia */
+    --cinza: #bdb8ad;          /* Bordas, Detalhes, Servidor, Footer */
 }
 
 body {
-    background-color: #f4f5fa;
-    color: #1D0C20;
-    height: 100vh;
-    margin: 0px;
-    box-sizing: border-box;
-}
-
-header {
-    display: flex;
-    height: 30%;
-    background-image: linear-gradient(rgba(12, 23, 32, 0.75), rgba(0, 140, 255, 0.85)), url("img/Captura de tela 2026-07-13 213726.png"); 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    color: #ffffff;
-    flex-direction: column;
-}
-
-header h1 {
-    font-size: 3.2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-main {
-    display: flex;
-    width: 60%;
-    height: 60%;
-    margin: -30px auto 40px auto;
-    background: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(29, 12, 32, 0.12);
-    box-sizing: border-box;
-    flex-direction: column;
+    background-color: var(--creme);
 }
 
-main pre {
-    margin-bottom: 15px;
-    display: flex;
-    text-align:justify;
-    justify-content: center;
+.container {
+    background-color: var(--branco);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid var(--cinza);
+}
 
-}
-main div{
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-}
-a{
-    display: inline-block;  
-    text-decoration: none;
+h1 {
+    color: var(--azul-principal);
     text-align: center;
-    color: rgb(2, 137, 255);
-    box-sizing: border-box;
+    border-bottom: 3px solid var(--azul-principal);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
 }
-a:hover{
-    color:darkred;
-    border: 2mm ;
-    border-radius:33%;
+
+h2 {
+    color: var(--azul-principal);
+    margin-top: 40px;
+    border-bottom: 1px solid var(--cinza);
+    padding-bottom: 5px;
 }
-a:active{
-    text-transform: uppercase;
+
+h3 {
+    color: var(--azul-principal);
 }
-a:visited{
-    color: blueviolet;
+
+p {
+    margin-bottom: 15px;
 }
-a:focus{
-    color:green;
+
+.highlight {
+    font-weight: bold;
+    color: var(--azul-principal);
 }
-header div{
-  display: flex;
-  margin: 0px;
-  justify-content:center;
-  flex-wrap: wrap;
-  gap: 300px;
+
+.permit {
+    color: #27ae60;
+    font-weight: bold;
 }
-footer{
-    display: flex;
-    height: 3%;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    justify-content: flex-end;
+
+.deny {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.example-box {
+    background-color: var(--azul-claro);
+    padding: 20px;
+    border-left: 5px solid var(--azul-principal);
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid var(--cinza);
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--azul-principal);
+    color: var(--branco);
+}
+
+tr:nth-child(even) {
+    background-color: var(--azul-claro);
+}
+
+ul, ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: var(--cinza);
+    margin: 40px 0;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    font-style: italic;
+    color: var(--cinza);
 }

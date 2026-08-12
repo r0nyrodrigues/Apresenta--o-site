@@ -1,52 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Segmentação de Rede</title>
-    <link rel="stylesheet" href=style.css>
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Segmentação de Rede (VLANs & ACLs)</h1>
-                <div><a
-                href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\Index.html">Inicio</a>
-            <a
-                href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\acls\acls.html">ACLs</a>
-            <a
-                href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\acls\vlans\vlans.html">VLANs</a>
-        </div>
+      <h1>Segmentação de Rede (VLANs & ACLs)</h1>
+      <div>
+        <a
+          href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\Index.html"
+          >Inicio</a
+        >
+        <a
+          href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\acls\acls.html"
+          >ACLs</a
+        >
+        <a
+          href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\acls\vlans\vlans.html"
+          >VLANs</a
+        >
+      </div>
     </header>
     <main>
-
-
-        <h1>1. VLANs (Redes Locais Virtuais)</h1>
-        A VLAN atua na Camada 2 (Enlace) do modelo OSI. A função principal dela é a organização lógica e isolamento de
-        tráfego.
-        Como funciona?
-        Imagine que você tem um único Switch físico de 24 portas. Sem VLANs, todos os 24 computadores conectados a ele
-        receberão os "gritos" (broadcasts) uns dos outros. Se um computador pergunta "Quem tem a impressora?", os outros
-        23 param para ouvir a mensagem, mesmo que não seja para eles.
-        Com VLANs, você pode dividir esse switch fisicamente único em múltiplos switches lógicos. Por exemplo:
-        Portas 1 a 10: VLAN 10 (Departamento de Vendas)
-        Portas 11 a 20: VLAN 20 (Departamento de TI)
-        Agora, um broadcast na VLAN 10 jamais será ouvido pela VLAN 20. Eles estão em "salas" diferentes, mesmo morando
-        no mesmo "prédio" (o switch físico).
-        Principais Benefícios:
-        Redução de Broadcast: Limita o ruído da rede, melhorando a performance geral.
-        Flexibilidade: Um funcionário de Vendas pode sentar no andar da TI, conectar o cabo na parede, e a porta do
-        switch pode ser configurada para pertencer à VLAN de Vendas. A rede segue o usuário, não o cabo físico.
-        Segurança Básica: Dispositivos em uma VLAN não conseguem falar com dispositivos de outra VLAN nativamente. Para
-        que eles conversem, é necessário um Roteador (ou Switch Layer 3) para fazer o roteamento inter-VLAN.
-
-
+      <h1>Fundamentos de Arquitetura de Redes e a Necessidade de VLANs</h1>
+      <p>
+        Em redes locais tradicionais (LANs) de topologia plana, todos os hosts
+        estão contidos dentro do mesmo <b>Domínio de Broadcast</b> e
+        <b>Domínio de Colisão</b>
+        (em nível de switch). Conforme a rede cresce, o volume de tráfego de
+        difusão (ARP requests, DHCP discoveries, e anúncios de roteamento)
+        cresce de forma exponencial. Esse fenômeno, conhecido como "Tempestade
+        de Broadcast" (Broadcast Storm), consome largura de banda significativa
+        e força as placas de rede (NICs) e CPUs de todos os hosts a processarem
+        pacotes que não lhes são destinados. A VLAN resolve este problema
+        segmentando logicamente a rede de Camada 2 (L2) sem a necessidade de
+        investir em hardware físico adicional.
+      </p>
+      <h1>Anatomia do Quadro IEEE 802.1Q (Tagging)</h1>
+      <p>
+        O padrão da indústria para multiplexação de VLANs em links de tronco é o
+        IEEE 802.1Q. Quando um quadro Ethernet padrão passa de uma porta de
+        acesso para uma porta de tronco, o switch insere uma etiqueta (tag) de 4
+        bytes (32 bits) no cabeçalho do quadro, logo após o campo MAC de Origem.
+        A etiqueta 802.1Q é subdividida nos seguintes campos:
+      </p>
+      <ul>
+        <li>
+          TPID (Tag Protocol Identifier): 16 bits configurados fixamente com o
+          valor 0x8100 para identificar que o quadro está etiquetado com 802.1Q.
+        </li>
+        <li>TCI (Tag Control Information): Composto pelos subcampos:</li>
+      </ul>
+      <ul>
+        <li>
+          PCP (Priority Code Point): 3 bits usados para Qualidade de Serviço
+          (QoS) e priorização de tráfego (Class of Service - CoS), permitindo
+          até 8 níveis de prioridade.
+        </li>
+        <li>
+          DEI (Drop Eligible Indicator): 1 bit que pode ser usado separadamente
+          ou em conjunto com o PCP para indicar quadros qualificados para
+          descarte em caso de congestionamento.
+        </li>
+        <li>
+          VID (VLAN Identifier): 12 bits dedicados à identificação da VLAN.
+          Permite um intervalo matemático de 0 a 4095 (4096 IDs lógicas). Os
+          valores 0 e 4095 são reservados, restando de 1 a 4094 para uso
+          prático.
+        </li>
+      </ul>
+      <h1>Classificação e Tipos de VLANs</h1>
     </main>
-    <footer>
-
-    </footer>
+    <footer></footer>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

@@ -1,10 +1,11 @@
-/* PALETA DE CORES:
-   #68B2F8 - Azul Claro (Destaques/Pacotes L2)
-   #506EE5 - Azul Principal (Botões e Pacotes L3)
-   #7037CD - Roxo Vibrante (Destaque do Roteador)
-   #651F71 - Roxo Escuro (Títulos)
-   #1D0C20 - Roxo Noturno (Fundo do Terminal)
-*/
+:root {
+    --azul-principal: #44749d; /* Títulos, Botões, Roteador, Destaques */
+    --azul-claro: #c6d4e1;     /* PCs, Hovers, Fundo claro */
+    --branco: #ffffff;         /* Fundo do Main, Textos claros */
+    --creme: #ebe7e0;          /* Fundo do Body, Linhas, Topologia */
+    --cinza: #bdb8ad;          /* Bordas, Detalhes, Servidor, Footer */
+}
+
 
 *{
     font-family: Arial, sans-serif;
