@@ -17,7 +17,12 @@
 }
 
 body {
-    background-color: var(--creme);
+    background-image: url("img/Captura\ de\ tela\ 2026-08-13\ 183717.png");
+    background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa quando o usuário rola a página */
+    /* ----------------------------------------- */
+    
     color: #333333; /* Cor neutra para leitura dos textos */
     min-height: 100vh;
     display: flex;
