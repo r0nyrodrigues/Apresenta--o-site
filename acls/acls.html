@@ -1,116 +1,286 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entendendo a ACL: O Segurança da Rede</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Segmentação de Rede (VLANs & ACLs)</h1>
+      <nav class="menu">
+        <a href="Index.html">Início</a>
+        <a href="acls.html">ACLs</a>
+        <a href="vlans.html">VLANs</a>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <h1>O Segurança e a Prancheta: Entendendo a ACL</h1>
 
-<div class="container">
-    <h1>O Segurança e a Prancheta: Entendendo a ACL</h1>
+        <p>
+          Imagine que uma rede de computadores é como um prédio comercial muito
+          seguro ou uma festa exclusiva. Para garantir que apenas as pessoas
+          certas entrem nos lugares certos, você precisa de um segurança na
+          porta com uma prancheta na mão.
+        </p>
 
-    <p>Imagine que uma rede de computadores é como um prédio comercial muito seguro ou uma festa exclusiva. Para garantir que apenas as pessoas certas entrem nos lugares certos, você precisa de um segurança na porta com uma prancheta na mão.</p>
+        <p>
+          No mundo da tecnologia, esse segurança é a
+          <span class="highlight">ACL</span> (sigla em inglês para
+          <em>Access Control List</em>, ou
+          <strong>Lista de Controle de Acesso</strong>).
+        </p>
 
-    <p>No mundo da tecnologia, esse segurança é a <span class="highlight">ACL</span> (sigla em inglês para <em>Access Control List</em>, ou <strong>Lista de Controle de Acesso</strong>).</p>
+        <p>
+          Aqui está uma explicação simples de como ela funciona, sem termos
+          técnicos complicados:
+        </p>
 
-    <p>Aqui está uma explicação simples de como ela funciona, sem termos técnicos complicados:</p>
+        <h2>O Segurança e a Prancheta</h2>
+        <p>
+          Quando você envia uma mensagem no WhatsApp, acessa um site ou baixa um
+          arquivo, essas informações viajam pela internet em pequenos "pacotes"
+          de dados. Quando esses pacotes tentam entrar na sua rede (ou sair
+          dela), eles precisam passar por um equipamento de controle, como um
+          roteador.
+        </p>
+        <p>
+          É aí que a ACL entra em ação. Ela é literalmente uma lista de regras
+          configurada nesse equipamento. Cada vez que um pacote de dados chega
+          na "porta", a ACL verifica sua identidade e faz duas perguntas
+          básicas:
+        </p>
+        <ol>
+          <li>De onde você vem e para onde vai?</li>
+          <li>Eu tenho uma regra que permite ou bloqueia a sua passagem?</li>
+        </ol>
 
-    <h2>O Segurança e a Prancheta</h2>
-    <p>Quando você envia uma mensagem no WhatsApp, acessa um site ou baixa um arquivo, essas informações viajam pela internet em pequenos "pacotes" de dados. Quando esses pacotes tentam entrar na sua rede (ou sair dela), eles precisam passar por um equipamento de controle, como um roteador.</p>
-    <p>É aí que a ACL entra em ação. Ela é literalmente uma lista de regras configurada nesse equipamento. Cada vez que um pacote de dados chega na "porta", a ACL verifica sua identidade e faz duas perguntas básicas:</p>
-    <ol>
-        <li>De onde você vem e para onde vai?</li>
-        <li>Eu tenho uma regra que permite ou bloqueia a sua passagem?</li>
-    </ol>
-
-    <h2>Permitir ou Negar</h2>
-    <p>Com base nessa lista de regras, a ACL toma uma de duas decisões:</p>
-    <ul>
-        <li><span class="permit">Permitir (Permit):</span> O pacote está na lista de convidados VIP. Ele pode passar e chegar ao destino.</li>
-        <li><span class="deny">Negar (Deny):</span> O pacote é suspeito ou não tem autorização para estar ali. Ele é bloqueado e descartado na mesma hora.</li>
-    </ul>
-
-    <div class="example-box">
-        <h3>Um exemplo prático:</h3>
-        <p>Imagine a rede de uma escola. A direção pode configurar uma ACL que diz:</p>
+        <h2>Permitir ou Negar</h2>
+        <p>Com base nessa lista de regras, a ACL toma uma de duas decisões:</p>
         <ul>
-            <li><strong>Regra 1:</strong> "Permitir que os computadores dos professores acessem o sistema de notas."</li>
-            <li><strong>Regra 2:</strong> "Negar que os computadores dos alunos acessem o sistema de notas."</li>
-            <li><strong>Regra 3:</strong> "Permitir que todos acessem a internet."</li>
+          <li>
+            <span class="permit">Permitir (Permit):</span> O pacote está na
+            lista de convidados VIP. Ele pode passar e chegar ao destino.
+          </li>
+          <li>
+            <span class="deny">Negar (Deny):</span> O pacote é suspeito ou não
+            tem autorização para estar ali. Ele é bloqueado e descartado na
+            mesma hora.
+          </li>
         </ul>
-    </div>
 
-    <h2>Por que a ACL é tão importante?</h2>
-    <ul>
-        <li><strong>Segurança:</strong> É a primeira linha de defesa contra invasores. Ela pode bloquear conexões de países suspeitos ou de computadores conhecidos por espalhar vírus, impedindo que eles sequer entrem na rede.</li>
-        <li><strong>Organização:</strong> Ajuda a separar quem pode ver o quê. Em uma empresa, a ACL garante que o departamento de marketing não consiga acessar os arquivos financeiros da contabilidade.</li>
-        <li><strong>Controle de Tráfego:</strong> Ajuda a rede a não ficar sobrecarregada, bloqueando tipos de dados que não são importantes para aquele ambiente (como bloquear jogos online na rede do escritório).</li>
-    </ul>
+        <div class="example-box">
+          <h3>Um exemplo prático:</h3>
+          <p>
+            Imagine a rede de uma escola. A direção pode configurar uma ACL que
+            diz:
+          </p>
+          <ul>
+            <li>
+              <strong>Regra 1:</strong> "Permitir que os computadores dos
+              professores acessem o sistema de notas."
+            </li>
+            <li>
+              <strong>Regra 2:</strong> "Negar que os computadores dos alunos
+              acessem o sistema de notas."
+            </li>
+            <li>
+              <strong>Regra 3:</strong> "Permitir que todos acessem a internet."
+            </li>
+          </ul>
+        </div>
 
-    <hr class="divider">
+        <h2>Por que a ACL é tão importante?</h2>
+        <ul>
+          <li>
+            <strong>Segurança:</strong> É a primeira linha de defesa contra
+            invasores. Ela pode bloquear conexões de países suspeitos ou de
+            computadores conhecidos por espalhar vírus, impedindo que eles
+            sequer entrem na rede.
+          </li>
+          <li>
+            <strong>Organização:</strong> Ajuda a separar quem pode ver o quê.
+            Em uma empresa, a ACL garante que o departamento de marketing não
+            consiga acessar os arquivos financeiros da contabilidade.
+          </li>
+          <li>
+            <strong>Controle de Tráfego:</strong> Ajuda a rede a não ficar
+            sobrecarregada, bloqueando tipos de dados que não são importantes
+            para aquele ambiente (como bloquear jogos online na rede do
+            escritório).
+          </li>
+        </ul>
 
-    <h2>1. A Regra de Ouro: O "Não" Invisível (Implicit Deny)</h2>
-    <p>Em uma ACL, existe uma regra fundamental que todo profissional de redes conhece: o <strong>Bloqueio Implícito</strong> (ou <em>Implicit Deny</em>).</p>
-    <p>Imagine que você está na fila de uma balada muito restrita. O segurança olha a prancheta. Ele lê o primeiro nome, o segundo, o terceiro... Se ele chegar ao final da lista de convidados VIP e o seu nome não estiver lá, o que acontece? Ele não vai te deixar entrar.</p>
-    <p>Nas redes de computadores é exatamente assim. No final de toda ACL, existe uma regra "invisível" que diz: <em>"Se nada acima permitiu esse pacote, bloqueie."</em> Isso garante que, na dúvida, a rede sempre escolha a segurança máxima. Ninguém entra "sem querer".</p>
+        <hr class="divider" />
 
-    <h2>2. O Sentido do Trânsito: Entrada e Saída</h2>
-    <p>Um bom controle de segurança não olha apenas para quem entra, mas também para quem sai. As ACLs podem ser configuradas em duas direções diferentes:</p>
-    <ul>
-        <li><strong>Entrada (Inbound):</strong> É o segurança na porta da frente olhando quem vem da rua (Internet) querendo entrar no prédio (sua rede). Ele barra invasores e tráfego indesejado antes mesmo que eles pisem no saguão.</li>
-        <li><strong>Saída (Outbound):</strong> É o segurança na porta de trás, vigiando o que sai da sua rede para a internet. Por que isso é útil? Imagine que um computador da rede pegou um vírus. A ACL de saída pode impedir que esse vírus envie os arquivos roubados da empresa para o computador de um hacker na internet.</li>
-    </ul>
+        <h2>1. A Regra de Ouro: O "Não" Invisível (Implicit Deny)</h2>
+        <p>
+          Em uma ACL, existe uma regra fundamental que todo profissional de
+          redes conhece: o <strong>Bloqueio Implícito</strong> (ou
+          <em>Implicit Deny</em>).
+        </p>
+        <p>
+          Imagine que você está na fila de uma balada muito restrita. O
+          segurança olha a prancheta. Ele lê o primeiro nome, o segundo, o
+          terceiro... Se ele chegar ao final da lista de convidados VIP e o seu
+          nome não estiver lá, o que acontece? Ele não vai te deixar entrar.
+        </p>
+        <p>
+          Nas redes de computadores é exatamente assim. No final de toda ACL,
+          existe uma regra "invisível" que diz:
+          <em>"Se nada acima permitiu esse pacote, bloqueie."</em> Isso garante
+          que, na dúvida, a rede sempre escolha a segurança máxima. Ninguém
+          entra "sem querer".
+        </p>
 
-    <h2>3. Os Dois Tipos de "Seguranças"</h2>
-    <p>Nas redes, as ACLs geralmente se dividem em duas categorias principais, dependendo do nível de chatice do segurança:</p>
+        <h2>2. O Sentido do Trânsito: Entrada e Saída</h2>
+        <p>
+          Um bom controle de segurança não olha apenas para quem entra, mas
+          também para quem sai. As ACLs podem ser configuradas em duas direções
+          diferentes:
+        </p>
+        <ul>
+          <li>
+            <strong>Entrada (Inbound):</strong> É o segurança na porta da frente
+            olhando quem vem da rua (Internet) querendo entrar no prédio (sua
+            rede). Ele barra invasores e tráfego indesejado antes mesmo que eles
+            pisem no saguão.
+          </li>
+          <li>
+            <strong>Saída (Outbound):</strong> É o segurança na porta de trás,
+            vigiando o que sai da sua rede para a internet. Por que isso é útil?
+            Imagine que um computador da rede pegou um vírus. A ACL de saída
+            pode impedir que esse vírus envie os arquivos roubados da empresa
+            para o computador de um hacker na internet.
+          </li>
+        </ul>
 
-    <table>
-        <tr>
+        <h2>3. Os Dois Tipos de "Seguranças"</h2>
+        <p>
+          Nas redes, as ACLs geralmente se dividem em duas categorias
+          principais, dependendo do nível de chatice do segurança:
+        </p>
+
+        <table>
+          <tr>
             <th>Tipo de ACL</th>
             <th>Como Funciona</th>
             <th>Exemplo</th>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td><strong>A) Padrão (O segurança simples)</strong></td>
-            <td>Esse segurança só faz uma pergunta: <em>"De onde você está vindo?"</em> (ou seja, ele olha apenas para a origem do pacote).</td>
-            <td>"Se você vem do departamento de Vendas, pode passar. Se vem da rua, está bloqueado." É rápido, mas não é muito inteligente, pois não pergunta o que a pessoa vai fazer lá dentro.</td>
-        </tr>
-        <tr>
+            <td>
+              Esse segurança só faz uma pergunta:
+              <em>"De onde você está vindo?"</em> (ou seja, ele olha apenas para
+              a origem do pacote).
+            </td>
+            <td>
+              "Se você vem do departamento de Vendas, pode passar. Se vem da
+              rua, está bloqueado." É rápido, mas não é muito inteligente, pois
+              não pergunta o que a pessoa vai fazer lá dentro.
+            </td>
+          </tr>
+          <tr>
             <td><strong>B) Estendida (O segurança rigoroso)</strong></td>
-            <td>Esse segurança é nível FBI. Ele faz um interrogatório completo: De onde você vem? Para onde você vai? O que você está carregando na mochila?</td>
-            <td>"Você vem das Vendas e está indo para a sala dos Servidores? OK. Mas espera aí, você está tentando acessar arquivos de banco de dados (<span class="deny">bloqueado</span>) ou só está tentando ver a página web interna (<span class="permit">permitido</span>)?"</td>
-        </tr>
-    </table>
+            <td>
+              Esse segurança é nível FBI. Ele faz um interrogatório completo: De
+              onde você vem? Para onde você vai? O que você está carregando na
+              mochila?
+            </td>
+            <td>
+              "Você vem das Vendas e está indo para a sala dos Servidores? OK.
+              Mas espera aí, você está tentando acessar arquivos de banco de
+              dados (<span class="deny">bloqueado</span>) ou só está tentando
+              ver a página web interna (<span class="permit">permitido</span>)?"
+            </td>
+          </tr>
+        </table>
 
-    <h2>4. Onde esses Seguranças Trabalham?</h2>
-    <p>As ACLs não são peças físicas que você compra na loja. Elas são linhas de código e regras digitais que "moram" dentro de equipamentos de rede. Os principais são:</p>
-    <ul>
-        <li><strong>Roteadores:</strong> São os "carteiros" da internet. Eles leem as ACLs para decidir por qual caminho mandar a carta ou se devem jogar a carta no lixo.</li>
-        <li><strong>Firewalls:</strong> São como fortalezas. O Firewall é um equipamento (ou programa) dedicado exclusivamente à segurança, e o "cérebro" de um Firewall usa regras que funcionam baseadas na mesma lógica de uma ACL gigantesca e muito complexa.</li>
-        <li><strong>Switches Gerenciáveis:</strong> Equipamentos que conectam vários computadores dentro do mesmo prédio e usam ACLs para impedir que a mesa do estagiário acesse o computador do chefe.</li>
-    </ul>
+        <h2>4. Onde esses Seguranças Trabalham?</h2>
+        <p>
+          As ACLs não são peças físicas que você compra na loja. Elas são linhas
+          de código e regras digitais que "moram" dentro de equipamentos de
+          rede. Os principais são:
+        </p>
+        <ul>
+          <li>
+            <strong>Roteadores:</strong> São os "carteiros" da internet. Eles
+            leem as ACLs para decidir por qual caminho mandar a carta ou se
+            devem jogar a carta no lixo.
+          </li>
+          <li>
+            <strong>Firewalls:</strong> São como fortalezas. O Firewall é um
+            equipamento (ou programa) dedicado exclusivamente à segurança, e o
+            "cérebro" de um Firewall usa regras que funcionam baseadas na mesma
+            lógica de uma ACL gigantesca e muito complexa.
+          </li>
+          <li>
+            <strong>Switches Gerenciáveis:</strong> Equipamentos que conectam
+            vários computadores dentro do mesmo prédio e usam ACLs para impedir
+            que a mesa do estagiário acesse o computador do chefe.
+          </li>
+        </ul>
 
-    <h2>5. Juntando tudo: Um Cenário da Vida Real</h2>
-    <p>Imagine uma casa inteligente moderna (Smart Home). A família tem câmeras de segurança, a TV da sala, o videogame do filho e o computador onde a mãe trabalha em home office com dados sigilosos do banco.</p>
-    
-    <div class="example-box">
-        <p>O roteador dessa casa pode ter uma ACL configurada da seguinte forma:</p>
-        <ol>
-            <li><strong>Regra para a Mãe:</strong> O computador de trabalho dela pode acessar tudo na internet (<span class="permit">Permitir</span>).</li>
-            <li><strong>Regra para o Videogame:</strong> O videogame do filho pode acessar os servidores de jogos da Sony ou da Microsoft (<span class="permit">Permitir</span>), mas não pode tentar se conectar ao computador da mãe (<span class="deny">Negar</span>).</li>
-            <li><strong>Regra para as Câmeras:</strong> As câmeras de segurança só podem enviar vídeos para o celular dos pais (<span class="permit">Permitir</span>). Qualquer tentativa de um computador desconhecido na internet tentar acessar as câmeras será bloqueada (<span class="deny">Negar</span>).</li>
-            <li><strong>Bloqueio Implícito:</strong> Qualquer outra coisa maluca que tente acontecer e não esteja nas regras 1, 2 ou 3... bloqueie e jogue fora!</li>
-        </ol>
-    </div>
+        <h2>5. Juntando tudo: Um Cenário da Vida Real</h2>
+        <p>
+          Imagine uma casa inteligente moderna (Smart Home). A família tem
+          câmeras de segurança, a TV da sala, o videogame do filho e o
+          computador onde a mãe trabalha em home office com dados sigilosos do
+          banco.
+        </p>
 
-    <h2>Resumo da Ópera</h2>
-    <p class="footer">
-        Sem as ACLs, a internet seria uma festa sem porta e sem dono, onde qualquer um entra em qualquer sala, mexe nas suas gavetas e sai sem ser notado. É a ACL que coloca ordem no caos, transformando a rede em um ambiente estruturado onde cada pacote de dados só vai para onde realmente precisa e tem permissão para ir.
-    </p>
+        <div class="example-box">
+          <p>
+            O roteador dessa casa pode ter uma ACL configurada da seguinte
+            forma:
+          </p>
+          <ol>
+            <li>
+              <strong>Regra para a Mãe:</strong> O computador de trabalho dela
+              pode acessar tudo na internet (<span class="permit">Permitir</span
+              >).
+            </li>
+            <li>
+              <strong>Regra para o Videogame:</strong> O videogame do filho pode
+              acessar os servidores de jogos da Sony ou da Microsoft (<span
+                class="permit"
+                >Permitir</span
+              >), mas não pode tentar se conectar ao computador da mãe (<span
+                class="deny"
+                >Negar</span
+              >).
+            </li>
+            <li>
+              <strong>Regra para as Câmeras:</strong> As câmeras de segurança só
+              podem enviar vídeos para o celular dos pais (<span class="permit"
+                >Permitir</span
+              >). Qualquer tentativa de um computador desconhecido na internet
+              tentar acessar as câmeras será bloqueada (<span class="deny"
+                >Negar</span
+              >).
+            </li>
+            <li>
+              <strong>Bloqueio Implícito:</strong> Qualquer outra coisa maluca
+              que tente acontecer e não esteja nas regras 1, 2 ou 3... bloqueie
+              e jogue fora!
+            </li>
+          </ol>
+        </div>
 
-</div>
-
-</body>
+        <h2>Resumo da Ópera</h2>
+        <p class="footer">
+          Sem as ACLs, a internet seria uma festa sem porta e sem dono, onde
+          qualquer um entra em qualquer sala, mexe nas suas gavetas e sai sem
+          ser notado. É a ACL que coloca ordem no caos, transformando a rede em
+          um ambiente estruturado onde cada pacote de dados só vai para onde
+          realmente precisa e tem permissão para ir.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; Desenvolvido por Rony e Julia</p>
+    </footer>
+  </body>
 </html>

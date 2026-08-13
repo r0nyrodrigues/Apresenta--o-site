@@ -1,22 +1,6 @@
-/* Paleta de Cores Atualizada */
-:root {
-    --azul-principal: #44749d; /* Títulos, Botões, Roteador, Destaques */
-    --azul-claro: #c6d4e1;     /* PCs, Hovers, Fundo claro */
-    --branco: #ffffff;         /* Fundo do Main, Textos claros */
-    --creme: #ebe7e0;          /* Fundo do Body, Linhas, Topologia */
-    --cinza: #bdb8ad;          /* Bordas, Detalhes, Servidor, Footer */
-}
-
-body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: var(--creme);
-}
-
+/* =========================================
+   3. LAYOUT PRINCIPAL (CABEÇALHO, MAIN, FOOTER)
+========================================= */
 .container {
     background-color: var(--branco);
     padding: 40px;
@@ -25,92 +9,81 @@ body {
     border: 1px solid var(--cinza);
 }
 
-h1 {
-    color: var(--azul-principal);
+/* --- SEU CABEÇALHO ORIGINAL --- */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    border-bottom: 3px solid var(--azul-principal);
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-}
-
-h2 {
-    color: var(--azul-principal);
-    margin-top: 40px;
-    border-bottom: 1px solid var(--cinza);
-    padding-bottom: 5px;
-}
-
-h3 {
-    color: var(--azul-principal);
-}
-
-p {
-    margin-bottom: 15px;
-}
-
-.highlight {
-    font-weight: bold;
-    color: var(--azul-principal);
-}
-
-.permit {
-    color: #27ae60;
-    font-weight: bold;
-}
-
-.deny {
-    color: #c0392b;
-    font-weight: bold;
-}
-
-.example-box {
-    background-color: var(--azul-claro);
-    padding: 20px;
-    border-left: 5px solid var(--azul-principal);
-    border-radius: 4px;
-    margin: 20px 0;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-th, td {
-    border: 1px solid var(--cinza);
-    padding: 12px;
-    text-align: left;
-}
-
-th {
-    background-color: var(--azul-principal);
+    padding: 35px 20px;
+    background-image: linear-gradient(rgba(68, 116, 157, 0.85), rgba(40, 70, 95, 0.9)), url("img/Captura de tela 2026-07-13 213726.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     color: var(--branco);
 }
 
-tr:nth-child(even) {
+header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    border-bottom: 3px solid var(--creme);
+    color: var(--creme);
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.menu a {
+    display: inline-block;  
+    text-decoration: none;
+    color: var(--creme);
+    font-weight: bold;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--azul-principal);
     background-color: var(--azul-claro);
+    border-radius: 6px;
+}
+/* ------------------------------- */
+
+main {
+    width: 85%;
+    max-width: 1000px;
+    margin: -20px auto 40px auto;
+    background: var(--branco);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--cinza);
+    display: flex;
+    flex-direction: column;
 }
 
-ul, ol {
-    margin-bottom: 20px;
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 8px;
-}
-
-.divider {
-    border: 0;
-    height: 1px;
-    background: var(--cinza);
-    margin: 40px 0;
-}
-
-.footer {
-    margin-top: 40px;
+footer {
+    margin-top: auto;
+    padding: 30px 20px;
     text-align: center;
-    font-style: italic;
-    color: var(--cinza);
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+    /* Imagem de fundo com gradiente escuro por cima para destacar o texto */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("img/Captura\ de\ tela\ 2026-08-12\ 211830.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: var(--branco);
 }

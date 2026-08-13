@@ -10,72 +10,205 @@
   <body>
     <header>
       <h1>Segmentação de Rede (VLANs & ACLs)</h1>
-      <div>
-        <a
-          href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\Index.html"
-          >Inicio</a
-        >
-        <a
-          href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\acls\acls.html"
-          >ACLs</a
-        >
-        <a
-          href="D:\Users\937644\OneDrive - SENAC em Minas - EDU\Documentos\GitHub\Apresenta--o-site\acls\vlans\vlans.html"
-          >VLANs</a
-        >
-      </div>
+      <nav class="menu">
+        <a href="/Index.html">Inicio</a>
+        <a href="acls.html">ACLs</a>
+        <a href="vlans.html">VLANs</a>
+      </nav>
     </header>
     <main>
-      <h1>Fundamentos de Arquitetura de Redes e a Necessidade de VLANs</h1>
-      <p>
-        Em redes locais tradicionais (LANs) de topologia plana, todos os hosts
-        estão contidos dentro do mesmo <b>Domínio de Broadcast</b> e
-        <b>Domínio de Colisão</b>
-        (em nível de switch). Conforme a rede cresce, o volume de tráfego de
-        difusão (ARP requests, DHCP discoveries, e anúncios de roteamento)
-        cresce de forma exponencial. Esse fenômeno, conhecido como "Tempestade
-        de Broadcast" (Broadcast Storm), consome largura de banda significativa
-        e força as placas de rede (NICs) e CPUs de todos os hosts a processarem
-        pacotes que não lhes são destinados. A VLAN resolve este problema
-        segmentando logicamente a rede de Camada 2 (L2) sem a necessidade de
-        investir em hardware físico adicional.
-      </p>
-      <h1>Anatomia do Quadro IEEE 802.1Q (Tagging)</h1>
-      <p>
-        O padrão da indústria para multiplexação de VLANs em links de tronco é o
-        IEEE 802.1Q. Quando um quadro Ethernet padrão passa de uma porta de
-        acesso para uma porta de tronco, o switch insere uma etiqueta (tag) de 4
-        bytes (32 bits) no cabeçalho do quadro, logo após o campo MAC de Origem.
-        A etiqueta 802.1Q é subdividida nos seguintes campos:
-      </p>
-      <ul>
-        <li>
-          TPID (Tag Protocol Identifier): 16 bits configurados fixamente com o
-          valor 0x8100 para identificar que o quadro está etiquetado com 802.1Q.
-        </li>
-        <li>TCI (Tag Control Information): Composto pelos subcampos:</li>
-      </ul>
-      <ul>
-        <li>
-          PCP (Priority Code Point): 3 bits usados para Qualidade de Serviço
-          (QoS) e priorização de tráfego (Class of Service - CoS), permitindo
-          até 8 níveis de prioridade.
-        </li>
-        <li>
-          DEI (Drop Eligible Indicator): 1 bit que pode ser usado separadamente
-          ou em conjunto com o PCP para indicar quadros qualificados para
-          descarte em caso de congestionamento.
-        </li>
-        <li>
-          VID (VLAN Identifier): 12 bits dedicados à identificação da VLAN.
-          Permite um intervalo matemático de 0 a 4095 (4096 IDs lógicas). Os
-          valores 0 e 4095 são reservados, restando de 1 a 4094 para uso
-          prático.
-        </li>
-      </ul>
-      <h1>Classificação e Tipos de VLANs</h1>
+      <div class="container">
+        <h1>Descomplicando Conceitos de Redes</h1>
+
+        <div class="card acl-card">
+          <h2>🔒 ACL (Lista de Controle de Acesso)</h2>
+          <p>
+            Imagine que uma rede de computadores é como um prédio comercial
+            muito seguro ou uma festa exclusiva. Para garantir que apenas as
+            pessoas certas entrem nos lugares certos, você precisa de um
+            segurança na porta com uma prancheta na mão.
+          </p>
+          <p>
+            No mundo da tecnologia, esse segurança é a <strong>ACL</strong>. Ela
+            é literalmente uma lista de regras configurada em um equipamento
+            (como um roteador ou firewall).
+          </p>
+
+          <h3>O Segurança e a Prancheta</h3>
+          <p>
+            Cada vez que um "pacote" de dados tenta passar, a ACL verifica sua
+            identidade e faz duas perguntas básicas:
+          </p>
+          <ul>
+            <li>
+              <strong>De onde você vem e para onde vai?</strong> (Origem e
+              Destino).
+            </li>
+            <li>
+              <strong
+                >Eu tenho uma regra que permite ou bloqueia a sua
+                passagem?</strong
+              >
+            </li>
+          </ul>
+
+          <h3>A Regra de Ouro: O "Não" Invisível</h3>
+          <p>
+            Existe uma regra fundamental no final de toda ACL chamada de
+            <span class="highlight">Bloqueio Implícito (Implicit Deny)</span>. É
+            como chegar ao final da lista VIP da balada: se o seu nome não está
+            lá, você não entra. Se nenhuma regra permitiu o pacote, ele é
+            automaticamente destruído por segurança.
+          </p>
+
+          <h3>Por que a ACL é importante?</h3>
+          <ul>
+            <li>
+              <strong>Segurança:</strong> É a primeira linha de defesa contra
+              hackers e vírus.
+            </li>
+            <li>
+              <strong>Organização:</strong> Separa quem pode ver o quê (ex:
+              Marketing não acessa o Financeiro).
+            </li>
+            <li>
+              <strong>Controle de Tráfego:</strong> Evita que a rede fique
+              sobrecarregada com dados inúteis.
+            </li>
+          </ul>
+        </div>
+
+        <div class="card vlan-card">
+          <h2 class="vlan-title">🏢 VLAN (Rede Local Virtual)</h2>
+          <p>
+            Uma VLAN permite dividir uma única rede física em várias redes
+            virtuais isoladas. Abaixo, você confere a explicação dividida entre
+            uma analogia simples e a forma como ela funciona na vida real.
+          </p>
+
+          <div class="section-box analogy-box">
+            <span class="badge badge-analogy">Parte 1</span>
+            <h3>A Analogia: O Escritório Sem Paredes</h3>
+            <p>
+              Imagine um prédio comercial gigante sem paredes internas. Todos os
+              departamentos (RH, TI, Financeiro e Diretoria) trabalham no mesmo
+              salão imenso. Sempre que alguém precisa achar um documento, usa um
+              megafone para perguntar a todos. O resultado é ruído, lentidão e
+              falta de privacidade.
+            </p>
+
+            <h4>O Crachá Colorido e o Gerente de Andar</h4>
+            <p>
+              Para resolver isso sem erguer paredes de tijolo, um Gerente de
+              Andar cria uma regra:
+            </p>
+            <ul>
+              <li>
+                Cada departamento ganha um <strong>Crachá Colorido</strong> (Ex:
+                Marketing é Amarelo, Financeiro é Verde, Diretoria é Preto).
+              </li>
+              <li>
+                Sempre que o João do Marketing (Amarelo) usa o megafone, o
+                Gerente intercepta o som e o reproduz
+                <strong>apenas nos ouvidos de quem tem o crachá Amarelo</strong
+                >.
+              </li>
+              <li>
+                Os funcionários de crachá Verde ou Preto nem ficam sabendo que a
+                pergunta aconteceu!
+              </li>
+            </ul>
+
+            <h4>O Elevador Exclusivo (Trunk)</h4>
+            <p>
+              Se a empresa expandir para o 2º andar, o Gerente cria um
+              <strong>Elevador Exclusivo</strong>. Ele transporta mensagens de
+              todas as cores misturadas para o andar de cima, mas sempre com um
+              bilhete identificando a cor correta para não entregar a mensagem
+              para a equipe errada.
+            </p>
+          </div>
+
+          <div class="section-box tech-box">
+            <span class="badge badge-tech">Parte 2</span>
+            <h3>A Vida Real: Cabos, Switches e Códigos</h3>
+            <p>
+              No mundo técnico, substituímos as pessoas e gerentes por
+              equipamentos de rede e protocolos de comunicação.
+            </p>
+
+            <h4>1. O Gerente = O Switch Gerenciável</h4>
+            <p>
+              O Switch é o equipamento onde todos os cabos de rede são
+              conectados. Sem VLANs, quando um computador envia uma mensagem de
+              aviso geral (<span class="highlight">Broadcast</span>), o Switch
+              replica essa mensagem para todas as portas. Com VLANs
+              configuradas, o Switch divide as suas portas em grupos lógicos
+              independentes (ex: Portas 1 a 10 = VLAN 10; Portas 11 a 20 = VLAN
+              20).
+            </p>
+
+            <h4>2. O Crachá = O Padrão IEEE 802.1Q (Tagging)</h4>
+            <p>
+              Quando um pacote de dados entra no Switch, ele recebe um "carimbo"
+              digital invisível chamado <strong>Tag</strong>, usando o protocolo
+              <span class="highlight">IEEE 802.1Q</span>. Esse carimbo
+              identifica a qual VLAN o pacote pertence. Ao entregar o pacote no
+              computador de destino, o Switch remove a Tag.
+            </p>
+
+            <h4>3. Domínio de Broadcast (O Alcance do Megafone)</h4>
+            <p>
+              O alcance de uma mensagem geral na rede é chamado de
+              <strong>Domínio de Broadcast</strong>. Ao criar VLANs, você divide
+              um grande domínio de broadcast em vários domínios menores,
+              reduzindo drasticamente o tráfego desnecessário e melhorando o
+              desempenho da rede.
+            </p>
+
+            <h4>4. Portas de Acesso vs. Portas Trunk</h4>
+            <ul>
+              <li>
+                <strong>Porta de Acesso (Access Port):</strong> Conecta
+                dispositivos finais (PCs, impressoras). Pertence a apenas
+                <u>uma VLAN</u>.
+              </li>
+              <li>
+                <strong>Porta Trunk (Trunk Port):</strong> Conecta um Switch a
+                outro Switch ou Roteador. Transporta o tráfego de
+                <u>múltiplas VLANs</u> simultaneamente mantendo as Tags
+                (etiquetas) 802.1Q intactas.
+              </li>
+            </ul>
+
+            <div class="summary-note">
+              <strong>Resumo Técnico:</strong> A VLAN é uma tecnologia da Camada
+              2 (Enlace) que isola o tráfego em domínios de broadcast virtuais
+              via protocolo 802.1Q, garantindo segurança, economia e desempenho.
+            </div>
+          </div>
+
+          <h3>Por que as VLANs são essenciais?</h3>
+          <ul>
+            <li>
+              <strong>Segurança:</strong> Se um hacker invadir o setor de RH,
+              ele não consegue alcançar a rede da Diretoria diretamente.
+            </li>
+            <li>
+              <strong>Desempenho:</strong> Elimina o tráfego excessivo de
+              mensagens inúteis na rede inteira.
+            </li>
+            <li>
+              <strong>Flexibilidade:</strong> Se um funcionário mudar de mesa ou
+              de andar, a TI só altera a configuração da tomada via sistema, sem
+              precisar mexer em cabos físicos.
+            </li>
+          </ul>
+        </div>
+      </div>
     </main>
-    <footer></footer>
-    <script src="script.js"></script>
+    <footer>
+      <p>&copy; Desenvolvido por Rony e Julia</p>
+    </footer>
   </body>
 </html>

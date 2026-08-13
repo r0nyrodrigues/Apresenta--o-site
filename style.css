@@ -232,10 +232,20 @@ main {
 /* FOOTER */
 footer {
     margin-top: auto;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
-    background-color: var(--cinza);
-    color: #333333; /* Texto escuro no fundo cinza */
     font-size: 0.9rem;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+    /* Imagem de fundo com gradiente escuro por cima para destacar o texto */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("img/Captura\ de\ tela\ 2026-08-12\ 211830.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: var(--branco);
 }
