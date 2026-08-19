@@ -11,73 +11,13 @@
     <header>
       <h1>Segmentação de Rede (VLANs & ACLs)</h1>
       <nav class="menu">
-        <a href="/Index.html">Inicio</a>
+        <a href="index.html">Inicio</a>
         <a href="acls.html">ACLs</a>
         <a href="vlans.html">VLANs</a>
       </nav>
     </header>
     <main>
       <div class="container">
-        <h1>Descomplicando Conceitos de Redes</h1>
-
-        <div class="card acl-card">
-          <h2>🔒 ACL (Lista de Controle de Acesso)</h2>
-          <p>
-            Imagine que uma rede de computadores é como um prédio comercial
-            muito seguro ou uma festa exclusiva. Para garantir que apenas as
-            pessoas certas entrem nos lugares certos, você precisa de um
-            segurança na porta com uma prancheta na mão.
-          </p>
-          <p>
-            No mundo da tecnologia, esse segurança é a <strong>ACL</strong>. Ela
-            é literalmente uma lista de regras configurada em um equipamento
-            (como um roteador ou firewall).
-          </p>
-
-          <h3>O Segurança e a Prancheta</h3>
-          <p>
-            Cada vez que um "pacote" de dados tenta passar, a ACL verifica sua
-            identidade e faz duas perguntas básicas:
-          </p>
-          <ul>
-            <li>
-              <strong>De onde você vem e para onde vai?</strong> (Origem e
-              Destino).
-            </li>
-            <li>
-              <strong
-                >Eu tenho uma regra que permite ou bloqueia a sua
-                passagem?</strong
-              >
-            </li>
-          </ul>
-
-          <h3>A Regra de Ouro: O "Não" Invisível</h3>
-          <p>
-            Existe uma regra fundamental no final de toda ACL chamada de
-            <span class="highlight">Bloqueio Implícito (Implicit Deny)</span>. É
-            como chegar ao final da lista VIP da balada: se o seu nome não está
-            lá, você não entra. Se nenhuma regra permitiu o pacote, ele é
-            automaticamente destruído por segurança.
-          </p>
-
-          <h3>Por que a ACL é importante?</h3>
-          <ul>
-            <li>
-              <strong>Segurança:</strong> É a primeira linha de defesa contra
-              hackers e vírus.
-            </li>
-            <li>
-              <strong>Organização:</strong> Separa quem pode ver o quê (ex:
-              Marketing não acessa o Financeiro).
-            </li>
-            <li>
-              <strong>Controle de Tráfego:</strong> Evita que a rede fique
-              sobrecarregada com dados inúteis.
-            </li>
-          </ul>
-        </div>
-
         <div class="card vlan-card">
           <h2 class="vlan-title">🏢 VLAN (Rede Local Virtual)</h2>
           <p>
@@ -87,7 +27,6 @@
           </p>
 
           <div class="section-box analogy-box">
-            <span class="badge badge-analogy">Parte 1</span>
             <h3>A Analogia: O Escritório Sem Paredes</h3>
             <p>
               Imagine um prédio comercial gigante sem paredes internas. Todos os
@@ -130,7 +69,6 @@
           </div>
 
           <div class="section-box tech-box">
-            <span class="badge badge-tech">Parte 2</span>
             <h3>A Vida Real: Cabos, Switches e Códigos</h3>
             <p>
               No mundo técnico, substituímos as pessoas e gerentes por

@@ -13,10 +13,10 @@ async function animarMovimento(elOrigem, elDestino, cor = '#68B2F8') {
     const rectB = elDestino.getBoundingClientRect();
 
     // Posição central dos dois elementos
-    const startX = rectA.left + rectA.width / 2 - 11;
-    const startY = rectA.top + rectA.height / 2 - 11;
-    const endX = rectB.left + rectB.width / 2 - 11;
-    const endY = rectB.top + rectB.height / 2 - 11;
+    const startX = rectA.left + window.scrollX + (rectA.width / 2) - 11;
+    const startY = rectA.top + window.scrollY + (rectA.height / 2) - 11;
+    const endX = rectB.left + window.scrollX + (rectB.width / 2) - 11;
+    const endY = rectB.top + window.scrollY + (rectB.height / 2) - 11;
 
     // Cria a bolinha do pacote
     const pacote = document.createElement('div');

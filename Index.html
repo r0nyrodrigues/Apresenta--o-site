@@ -1,24 +1,25 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Segmentação de Rede - VLANs</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <header>
-      <h1>Segmentação de Rede (VLANs & ACLs)</h1>
-      <nav class="menu">
-        <a href="Index.html">Início</a>
-        <a href="/acls/acls.html">ACLs</a>
-        <a href="/acls/vlans/vlans.html">VLANs</a>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Segmentação de Rede - VLANs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <main>
-         <pre>
+<body>
+  <header>
+    <h1>Segmentação de Rede (VLANs & ACLs)</h1>
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <a href="acls.html">ACLs</a>
+      <a href="vlans.html">VLANs</a>
+    </nav>
+  </header>
+
+  <main>
+    <pre>
             Compreender a segmentação de rede é como entender a arquitetura de segurança e organização de um grande
             edifício corporativo. Sem segmentação, todos os funcionários, visitantes e dados circulam pelo mesmo saguão
             gigante, o que gera lentidão, confusão e, principalmente, falhas de segurança críticas.
@@ -27,70 +28,104 @@
             e seguro.
         </pre>
 
-      <section class="simulador-container">
-        <h2>Simulador Interativo de Envio de Pacotes e ACLs</h2>
+    <section class="simulador-container">
+      <h2>Simulador Interativo de Envio de Pacotes e ACLs</h2>
 
-        <div class="painel-controle">
-          <div class="grupo-controle">
-            <label for="origem">Origem:</label>
-            <select id="origem">
-              <option value="node-pca">PC A (VLAN 10 - 192.168.10.10)</option>
-            </select>
-          </div>
-
-          <div class="grupo-controle">
-            <label for="destino">Destino:</label>
-            <select id="destino">
-              <option value="node-serva">Servidor A (VLAN 20 - 192.168.20.10)</option>
-              <option value="node-pcb">PC B (VLAN 10 - 192.168.10.20)</option>
-            </select>
-          </div>
-
-          <div class="grupo-controle">
-            <label for="acl">Regra de ACL:</label>
-            <select id="acl">
-              <option value="none">Sem ACL (Permitir Tudo)</option>
-              <option value="deny_vlan10_to_vlan20">Bloquear VLAN 10 ➔ VLAN 20</option>
-              <option value="deny_pca_to_serva">Bloquear PC A ➔ Servidor A</option>
-            </select>
-          </div>
-
-          <button class="btn-enviar" onclick="enviarPacote()">Enviar Pacote</button>
+      <div class="painel-controle">
+        <div class="grupo-controle">
+          <label for="origem">Origem:</label>
+          <select id="origem">
+            <option value="node-pca">PC A (VLAN 10 - 192.168.10.10)</option>
+          </select>
         </div>
 
-        <div class="topologia-rede">
-          <div id="node-pca" class="no-rede no-pc" data-vlan="10" data-ip="192.168.10.10">
-            💻 PC A
+        <div class="grupo-controle">
+          <label for="destino">Destino:</label>
+          <select id="destino">
+            <option value="node-serva">Servidor A (VLAN 20 - 192.168.20.10)</option>
+            <option value="node-pcb">PC B (VLAN 10 - 192.168.10.20)</option>
+          </select>
+        </div>
+
+        <div class="grupo-controle">
+          <label for="acl">Regra de ACL:</label>
+          <select id="acl">
+            <option value="none">Sem ACL (Permitir Tudo)</option>
+            <option value="deny_vlan10_to_vlan20">Bloquear VLAN 10 ➔ VLAN 20</option>
+            <option value="deny_pca_to_serva">Bloquear PC A ➔ Servidor A</option>
+          </select>
+        </div>
+
+        <button class="btn-enviar" onclick="enviarPacote()">Enviar Pacote</button>
+      </div>
+
+      <div class="topologia-rede">
+        <div id="node-pca" class="no-rede no-pc" data-vlan="10" data-ip="192.168.10.10">
+          💻 PC A
+          <span class="no-subtexto">VLAN 10</span>
+        </div>
+
+        <div id="node-router" class="no-rede no-roteador">
+          🔄 Roteador L3
+        </div>
+
+        <div class="coluna-destinos">
+          <div id="node-serva" class="no-rede no-servidor" data-vlan="20" data-ip="192.168.20.10">
+            🖥️ Servidor A
+            <span class="no-subtexto">VLAN 20</span>
+          </div>
+          <div id="node-pcb" class="no-rede no-pc" data-vlan="10" data-ip="192.168.10.20">
+            💻 PC B
             <span class="no-subtexto">VLAN 10</span>
           </div>
-
-          <div id="node-router" class="no-rede no-roteador">
-            🔄 Roteador L3
-          </div>
-
-          <div class="coluna-destinos">
-            <div id="node-serva" class="no-rede no-servidor" data-vlan="20" data-ip="192.168.20.10">
-              🖥️ Servidor A
-              <span class="no-subtexto">VLAN 20</span>
-            </div>
-            <div id="node-pcb" class="no-rede no-pc" data-vlan="10" data-ip="192.168.10.20">
-              💻 PC B
-              <span class="no-subtexto">VLAN 10</span>
-            </div>
-          </div>
         </div>
+      </div>
 
-        <div class="console-log">
-          <h3>Console do Roteador / Switch:</h3>
-          <pre id="log"></pre>
-        </div>
-      </section>
-    </main>
+      <div class="console-log">
+        <h3>Console do Roteador / Switch:</h3>
+        <pre id="log"></pre>
+      </div>
+    </section>
 
-    <footer>
-      <p>&copy; Desenvolvido por Rony e Julia</p>
-    </footer>
+    <!--EXPLICAÇÃO -->
+    <section class="explicacao-simulador">
+      <h2>Entenda o que está acontecendo na tela</h2>
+      <p>Experimente os três cenários abaixo no simulador e veja como a rede se comporta na prática:</p>
 
-    <script src="script.js"></script>
-  </body>
+      <div class="cenario-card">
+        <h3>1. Comunicação na Mesma VLAN (PC A ➔ PC B)</h3>
+        <p><strong>O que você vê:</strong> A bolinha (pacote de dados) viaja diretamente da origem para o destino,
+          ficando verde no final.</p>
+        <p><strong>O porquê:</strong> Como os dois computadores estão na mesma rede lógica (VLAN 10), eles se comunicam
+          de forma direta (Camada 2). É como se estivessem na mesma sala, sem precisar de um roteador para encontrar o
+          caminho.</p>
+      </div>
+
+      <div class="cenario-card">
+        <h3>2. Comunicação entre VLANs Diferentes (PC A ➔ Servidor A)</h3>
+        <p><strong>O que você vê:</strong> A bolinha viaja primeiro até o Roteador L3 no centro da tela. Depois de
+          analisada, segue viagem para o servidor.</p>
+        <p><strong>O porquê:</strong> Redes diferentes (VLAN 10 e VLAN 20) são isoladas por padrão. Para que elas
+          conversem, o roteador (Camada 3) atua como uma ponte. Se a via estiver livre (Sem ACL), o pacote é entregue
+          com sucesso.</p>
+      </div>
+
+      <div class="cenario-card cenario-alerta">
+        <h3>3. O Bloqueio da Segurança (Regra de ACL Ativada)</h3>
+        <p><strong>O que você vê:</strong> Selecione uma regra de bloqueio no painel. O pacote viaja até o Roteador,
+          fica vermelho e desaparece!</p>
+        <p><strong>O porquê:</strong> A ACL atua como o "segurança" do prédio. Ela lê o endereço do pacote e verifica as
+          regras. Ao constatar que o tráfego é proibido, o roteador "dropa" (descarta) o pacote imediatamente,
+          protegendo o servidor de acessos não autorizados.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Desenvolvido por Rony e Julia</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
